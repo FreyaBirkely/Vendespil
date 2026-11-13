@@ -1,0 +1,114 @@
+body {
+	background-image: url(/img/purple-background.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.memory-game {
+	margin-top: 10px;
+	position: relative;
+	perspective: 700px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.memory-game h1 {
+	font-size: 40px;
+	color: rgb(134, 52, 172);
+	-webkit-text-stroke-color: rgb(87, 32, 94);
+	-webkit-text-stroke-width: 2px;
+}
+
+/* Card section */
+#cards-wrapper {
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 10px;
+	position: relative;
+	padding: 0;
+}
+
+
+/* SELVE KORTET */
+.card {
+	list-style-type: none;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	transform-style: preserve-3d;
+	transition: transform 0.6s;
+}
+
+.card:not(.done) {
+	cursor: pointer;
+}
+
+/* når kortet er aktivt (flip) */
+.card.show {
+	transform: rotateY(180deg);
+}
+
+/* begge sider */
+.card span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	backface-visibility: hidden;
+	border-radius: 8px;
+	font-size: 25px;
+	font-weight: bold;
+	color: rgb(92, 40, 92);
+}
+
+/* forsiden */
+.card .front {
+	background-color: #bf72ce;
+	border: 2px solid rgb(126, 43, 158);
+}
+
+/* bagsiden */
+.card .back {
+	background: rgb(197, 91, 179);
+	transform: rotateY(180deg);
+	border: 3px solid rgb(180, 63, 131);
+}
+
+/* færdige kort */
+.card.done .back {
+	background-color: rgb(108, 201, 165);
+	color: rgb(34, 136, 102);
+	border: 3px solid rgb(77, 145, 119);
+	font-size: 200%;
+}
+
+/* reset knap */
+.memory-game__reset {
+	margin-top: 16px;
+}
+
+.memory-game__reset-btn {
+	background-color: #d67676;
+	color: rgb(109, 64, 64);
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+}
+
+.memory-game__reset-btn:hover,
+.memory-game__reset-btn:focus {
+	background-color: #c05959;
+	box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+	transform: translateY(-1px);
+}
+
+.memory-game__reset-btn:active {
+	background-color: #c05959;
+	box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+	transform: translateY(0);
+}
